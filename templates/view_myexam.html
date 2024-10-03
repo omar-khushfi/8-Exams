@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+{% load static %}
+ {% block content %}
+    
+   
+ <div class="all-quastionset">
+    
+    {% for i in all_Exam %}
+        <div>
+            <p>{{i.name_questionset}}</p>
+            {% if  i.is_succeed %}
+            <p style="margin-left: 40%;color: green;">you are success </p>
+            {% else %}
+            <p style="margin-left: 40%;color: red;">you are falid </p>
+            {% endif %}
+            <p>my grade : {{i.grade}}</p>
+
+        </div>
+        <hr>
+    {% endfor %}
+        
+ </div>
+  <nav aria-label="">
+    <ul class="">
+      {% if all_Exam.has_previous %}
+      <li class="">
+        <a
+          class=""
+          href="?page={{ all_Exam.previous_page_number}}"
+          aria-label="Previous"
+        >
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {% endif %} {% for num in all_Exam.paginator.page_range %}
+      <li class="{% if page_obj.number == num %}{% endif %}">
+        <a class="" href="?page={{ num }}">{{ num }}</a>
+      </li>
+      {% endfor %} {% if all_Exam.has_next %}
+      <li class="">
+        <a
+          class="" href="?page={{ all_Exam.next_page_number }}"
+          aria-label="Next"
+        >
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endblock content %}

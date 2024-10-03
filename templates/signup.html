@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="form" >
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div class="field">
+            <div>
+                <label for="student">Student</label>
+                <input type="radio" name="type" class="input" value="student" id="radiostudent" checked>
+            </div>
+            <div>
+                <label for="type">Teacher</label>
+                <input type="radio" name="type" class="input" id="radioteacher" value="teacher">
+            </div>
+        </div>
+        <div class="field">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="input">
+        </div>
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="text" name="email" class="input">
+        </div>
+        <div class="field">
+            <label for="password">Password1</label>
+            <input type="password" name="password1" class="input">
+        </div>
+        <div class="field">
+            <label for="password">Password2</label>
+            <input type="password" name="password2" class="input">
+        </div>
+        <div class="field">
+            <label for="mobile">Mobile</label>
+            <input type="number" name="mobile" class="input">
+        </div>
+        <div class="field">
+            <label for="age">Age</label>
+            <input type="number" name="age" class="input">
+        </div>
+        <div class="field">
+            <label for="image">Photo</label>
+            <input type="file" name="image" class="input">
+        </div>
+
+      
+        <div class="newdiv" id="certificatesField">
+            <h3>Enter your certificates, separate by "/"</h3>
+            <div class="field">
+                <label for="certificas">Certificates</label>
+                <input type="text" name="certificas" class="input">
+            </div>
+        </div>
+
+       
+        <div class="newdiv" id="academicStageField">
+            <h3>Enter your Academic stage, separate by "/"</h3>
+            <div class="field">
+                <label for="Academic_stage">Academic Stage</label>
+                <input type="text" name="Academic_stage" class="input">
+            </div>
+        </div>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const studentRadio = document.getElementById('radiostudent');
+            const teacherRadio = document.getElementById('radioteacher');
+            const certificatesField = document.getElementById('certificatesField');
+            const academicStageField = document.getElementById('academicStageField');
+        
+            
+            toggleFields();
+        
+         
+            studentRadio.addEventListener('change', toggleFields);
+            teacherRadio.addEventListener('change', toggleFields);
+        
+            function toggleFields() {
+                if (studentRadio.checked) {
+                    certificatesField.style.display = 'none';
+                    academicStageField.style.display = 'flex';
+                } else if (teacherRadio.checked) {
+                    certificatesField.style.display = 'flex';
+                    academicStageField.style.display = 'none';
+                }
+            }
+        });
+        
+    </script> 
+{% endblock content %}
+    

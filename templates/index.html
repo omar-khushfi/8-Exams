@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="search">
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="search" class="text-search" >
+    <button type="submit" class="button-search">Search</button>
+  </form>
+</div>
+<div class="all-quastionset">
+  
+  {% for i in all_quastionset %}
+  <div cont-quastionset class="one-quastionset">
+    <h2>{{i.title}}</h2>
+    <h3>{{i.teacher.username}}</h3>
+    <p>Number_of_successful : {{i.Number_of_successful}}</p>
+    <p>Number_of_failures : {{i.Number_of_failures}}</p>
+    <p>Number_of_failures : {{i.Limit_of_success}}</p>
+
+    {% if user.certificas %}
+    <a href="{% url 'exam' i.pk%}" class="buttonquestionset">show quastionset</a>
+    {% else %}
+   
+
+    <button type="button" onclick="showAlert({{i.pk}})" class="buttonquestionset">applide quastionset</button>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<nav aria-label="">
+  <ul class="">
+    {% if all_quastionset.has_previous %}
+    <li class="">
+      <a
+        class=""
+        href="?page={{ all_quastionset.previous_page_number}}"
+        aria-label="Previous"
+      >
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %} {% for num in all_quastionset.paginator.page_range %}
+    <li class="{% if page_obj.number == num %}{% endif %}">
+      <a class="" href="?page={{ num }}">{{ num }}</a>
+    </li>
+    {% endfor %} {% if all_quastionset.has_next %}
+    <li class="">
+      <a
+        class="" href="?page={{ all_quastionset.next_page_number }}"
+        aria-label="Next"
+      >
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+<script>
+  function showAlert(x) {
+      if (confirm("هل أنت متأكد من أنك تريد الذهاب إلى صفحة الاختبار؟")) {
+         
+          window.location.href = `/exam/${x}`;
+      } else {
+          alert("تم إلغاء العملية.");
+      }
+  }
+  </script>
+  
+</script>
+{% endblock content %}

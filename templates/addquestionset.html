@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="from-addquastion" id="from-addquastion">
+ 
+    <form method="post" enctype="multipart/form-data" id="formquastion">
+        {% csrf_token %}
+      <div class="title">
+        <label for="title">title for quastionset </label>
+        <input name="title" type="text">
+      </div>
+      
+      <div class="fieldaddquastion Limit_of_success">
+        <label for="Limit_of_success">Limit_of_success</label>
+        <input name="Limit_of_success" type="number">
+      </div>
+
+      <div class="quastions" id="quastions">
+        <div class="titlefield" id="titlefield">
+            <h2>content</h2>
+            <h2>true answer </h2>
+            <h2>false answer</h2>
+            <h2>false answer</h2>
+            <h2 >grade</h2>
+        </div>
+        
+      </div>
+        <button type="submit" class="submitformquastion">Save</button>
+    </form>
+    <button onclick="newquastion()" class="buttonaddquastion">add quastion</button>
+
+</div>
+   <script>
+       var count=0;
+
+       function removequastion(x){
+        document.getElementById(x).remove()
+       }
+    function newquastion(){
+        let form = document.getElementById('quastions')
+        let creat=` 
+     
+        <input type="text" name="content-${count}">
+
+          <input type="text" name="1-${count}">
+
+         
+            <input type="text" name="2-${count}">
+
+         
+              <input type="text" name="3-${count}">
+              <input type="number" name="4-${count}" style="width:100px">
+              <button onclick="removequastion(${count})" >delete</button>
+        `
+
+        let tempDiv = document.createElement('div');
+        tempDiv.innerHTML = creat;
+        tempDiv.classList.add("quastion")
+        tempDiv.id=count
+        if (count == 0)
+        {
+          let titlefield=document.getElementById("titlefield");
+          titlefield.style.visibility="visible";
+        }
+        form.appendChild(tempDiv);
+        count=count+1;
+    }
+   </script>
+{% endblock content %}
+    

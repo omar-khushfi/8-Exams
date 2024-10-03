@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if  user.certificas %}
+<a href="{% url 'addquestionset'%}" class="buttonquestionset">Add  quastionset</a>
+<a href="{% url 'myquestionset'%}" class="buttonquestionset">My quastionset</a>
+{% else %}
+<a href="{% url 'myexams'%}" class="buttonquestionset">My exams</a>
+{% endif %}
+<div class="form" >
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div class="field">
+          <img
+          
+          {% if user.image %}
+          src="{{user.image.url}}
+            
+          {% endif %}
+             
+          ">
+        </div>
+        <div class="field">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="input" value="{{user.username}}">  
+        </div>
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="text" name="email" class="input" value="{{user.email}}">
+        </div>
+        <div class="field">
+            <label for="password">Password1</label>
+            <input type="password" name="password1" class="input">
+        </div>
+        <div class="field">
+            <label for="password">Password2</label>
+            <input type="password" name="password2" class="input">
+        </div>
+        <div class="field">
+            <label for="mobile">Mobile</label>
+            <input type="number" name="mobile" class="input" value="{{user.mobile}}">
+        </div>
+        <div class="field">
+            <label for="age">Age</label>
+            <input type="number" name="age" class="input" value="{{user.age}}">
+        </div>
+        <div class="field">
+            <label for="image">Photo</label>
+            <input type="file" name="image" class="input" value="">
+        </div>
+        
+        {% if  user.certificas %}
+            
+        
+        
+        <div class="newdiv" id="certificatesField">
+            <h3>Enter your certificates, separate by "/"</h3>
+            <div class="field">
+                <label for="certificas">Certificates</label>
+                <input type="text" name="certificas" class="input" value="{{user.certificas}}">
+            </div>
+        </div>
+        
+        {% else %}
+        <div class="newdiv" id="academicStageField">
+            <h3>Enter your Academic stage, separate by "/"</h3>
+            <div class="field">
+                <label for="Academic_stage">Academic Stage</label>
+                <input type="text" name="Academic_stage" class="input" value="{{user.Academic_stage}}">
+            </div>
+        </div>
+        {% endif %}
+
+        <button type="submit">Save</button>
+    </form>
+
+</div>
+
+   
+{% endblock content %}
+    

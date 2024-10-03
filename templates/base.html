@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+ 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    {% block title %}
+        Page Title
+    {% endblock title %}
+        </title>
+        
+   <link rel="stylesheet" href="{% static 'main.css' %}">
+ 
+  
+</head>
+<body>
+    <header>
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'logout_view' %}">logout</a>
+      
+      {% if  user.certificas %}
+      <a href="{% url 'profilet' %}" class="button-profile">my profile</a>
+      {% elif user.Academic_stage%}
+      <a href="{% url 'profiles' %}" class="button-profile">my profile</a>
+      {% endif %}
+        
+
+      {% endif %}
+
+
+
+
+      {% if request.user.is_authenticated %}
+     
+      <h2>hello : {{request.user.username}}</h2>
+     
+      {% endif %}
+    </header>
+    {% if messages %}
+    {% for me in messages %}
+    <h2 class="message">
+      {{me}}
+    </h2>
+    {% endfor %}
+      
+  {% endif %}
+        
+    {% block content %}
+        
+    {% endblock content %}
+        
+</body>
+</html>

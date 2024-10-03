@@ -1,0 +1,361 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #00ffbb;
+}
+
+
+
+.form{
+    
+    width: 500px;
+    height: auto;
+    background-color: aquamarine;
+    margin:auto ;
+    padding: 20px;
+    margin-top: 75px;
+    margin-bottom: 150px;
+    border-radius:50px ;
+
+}
+.field{
+    margin: 20px;
+    background-color: azure;
+    padding: 20px;
+    border-radius: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: baseline;
+}
+.field input{
+    display: flex;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 10px;
+    height: 35px;
+    border-style: inset;
+    border: 10;
+    border-color: #00ff3085;
+}
+.field label{
+    font-size: large;
+    display: flex;
+}
+.form form button{
+    width: 70%;
+    color: rgb(252, 255, 254);
+   margin-left: 17%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(131, 211, 180);
+    font-size: 30px;
+    font-weight: bolder;
+    border: 0px;
+    
+}
+.form form .field input[type='radio']{
+   width: 25px;
+    
+}
+.form form .field input[type='file']{
+  
+    padding: 5px;
+     
+ }
+.newdiv{
+    display: flex;
+    background-color: azure;
+    padding: 10px;
+    border-radius: 50px;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.newdiv .field{ 
+    width: 100%;
+}
+
+
+.form form button:hover{
+   background-color: rgb(136, 185, 160);
+    
+}
+
+
+.message{
+    height: 50px;
+    background-color: #ff0000;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.field img{
+    width: 200px;
+    border-radius: 50%;
+    height: 200px;
+
+}
+
+header{
+    background-color: #28d383c2;
+    height: 40px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-bottom: 50px;
+}
+header a{
+    text-decoration: none;
+    width: 25px;
+    height: 0px;
+    padding: 26px;
+    border-radius: 10%;
+    background-color: #ff0000db;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    font-size: x-large;
+    
+}
+
+
+.button-profile{
+    text-decoration: none;
+    width: 119px;
+    height: 0px;
+    margin-right: 15px;
+    padding: 26px;
+    border-radius: 6%;
+    background-color: #3ab369db;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    font-size: x-large;
+    
+}
+
+header h2{
+    margin-right: 70%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    color: #494f4e;
+    align-content: center;
+}
+.title input{
+    width: 50%;
+    height: 40px;
+    border-radius: 50px;
+    margin: 20px;
+    border: 0;
+    font-size: x-large;
+    
+}
+.title label{
+    margin-left: 10%;
+    font-size: 30px;
+}
+
+.Limit_of_success label{
+    margin-left: 10%;
+    font-size: 30px;
+}
+
+.Limit_of_success input{
+    width: 10%;
+    height: 40px;
+    border-radius: 50px;
+    margin: 20px;
+    margin-left: 45px;
+    border: 0;
+    font-size: x-large;
+}
+
+.quastion input{
+    width: 18%;
+    font-size: medium;
+    height: 30px;
+    border-radius: 50px;
+    border: 0;
+    
+}
+.quastion label{
+    font-size: larger;
+}
+.quastion{
+    padding: 20px;
+     display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+.quastions h2{
+    display:  inline;
+}
+.formquastion .quastions{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+.quastions .titlefield{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    visibility: hidden;
+}
+.submitformquastion{
+    font-size: larger;
+    background-color: #7bdf7b;
+    border: 0;
+    height: 42px;
+    margin-left: 40%;
+    width: 300px;
+    border-radius: 50px;
+}
+.submitformquastion:hover{
+    background-color: #62b462;
+}
+
+.buttonaddquastion{
+
+background-color: aqua;
+  border: 0;
+  width: 150px;
+  height: 40px;
+  font-size: larger;
+  margin: 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.buttonquestionset{
+
+      background-color: rgb(0, 255, 136);
+      border: 0;
+      width: 170px;
+      height: 40px;
+      font-size: larger;
+      margin: 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      padding: 5px;
+}
+.buttonquestionset:hover{
+    background-color: rgb(56, 170, 117);
+}
+    
+.from-addquastion{
+    margin-bottom: 100px ;
+}
+
+.all-quastionset{
+
+    background-color: rgb(182, 255, 218);
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+.one-quastionset{
+    text-align: center;
+    background-color: #7bdf7b;
+    padding: 20px;
+    margin: 15px;
+    width: 20%;
+    border-radius: 10px;
+  
+}
+
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 5px;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 10px 15px;
+    color: #f0db4f;
+    background-color: #161616ed; 
+    text-decoration: none;
+    border: 1px solid #f0db4f;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    background-color: #f0db4f;
+    color: #161616ed;
+  }
+  
+  nav ul li.active a {
+    background-color: #f0db4f;
+    color: #161616ed;
+    font-weight: bold;
+  }
+  
+nav ul li a span {
+    font-size: 18px;
+  }
+
+
+
+ .examallquestion{
+    margin: 30px;
+    padding: 30px;
+    background-color: rgb(182, 255, 218);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: baseline;
+}
+
+
+
+.examquestion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.examquestion h2{
+    display: inline;
+    margin: 50px;
+
+}
+.examquestion div p{
+    display: inline;
+
+}
+.search{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}

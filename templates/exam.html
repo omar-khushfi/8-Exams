@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if post %}
+<h1 style="margin-left: 40%;"> the Limit_of_success : {{Limit_of_success}}</h1>
+<h1 style="margin-left: 40%;"> your result is : {{result}}</h1>
+
+        {% if  Limit_of_success <= result %}
+        <h1 style="margin-left: 40%;color: green;">you are success </h1>
+        {% else %}
+        <h1 style="margin-left: 40%;color: red;">you are falid </h1>
+        {% endif %}
+    
+    <div class="examallquestion" >
+       
+    <div class="examquestion">
+       {% for question_id, question_data in questions.items %}
+   <div>
+        <h2 class="test"> {{question_data.question.content}}</h2><p>grade: {{question_data.question.grade}}</p> 
+    </div>
+        
+    
+    
+   
+        
+        {% for j in question_data.answers %}
+
+        {% if j.pk == question_data.ch.pk or question_data.ch == "no" %}
+          {% if j.is_true == True %}
+             <div style="background-color: #53dd539e;
+               padding: 10px;
+                 margin: 10px;
+                 border-radius: 10px;"> 
+            <input type="radio" checked disabled>
+            <label for="answer">{{j.content}}</label>
+             </div>
+             {%else%}
+             <div style="background-color: #ff0000ad;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;"> 
+                <input type="radio" checked>
+                <label for="answer">{{j.content}}</label>
+                 </div>
+                {% endif %}
+           {% elif j.is_true == True %}
+           <div style="background-color: #53dd539e;
+               padding: 10px;
+                 margin: 10px;
+                 border-radius: 10px;"> 
+          <input disabled type="radio" >
+          <label for="answer">{{j.content}}</label>
+           </div>
+           {%else%}
+           <div> 
+              <input disabled type="radio" >
+              <label for="answer">{{j.content}}</label>
+               </div>
+               {% endif %}
+               {% endfor %} 
+               <hr style="width: 100%;">      
+        {% endfor %}
+       
+            
+ 
+        </div>
+    </div>
+  
+    {% else %}
+
+   
+    <div id="countdown" style="margin-left:40%; font-size: 50px;"></div>
+    
+    <form method="post" id="myForm">
+        {% csrf_token %}
+        <div class="examallquestion" >
+        <div class="examquestion">
+        {% for question, answers in question_with_answer.items %}
+        <div>
+            <h2 class="test"> {{question.content}}</h2><p>grade: {{question.grade}}</p> 
+        </div>
+        <input type="hidden" name="question-{{ forloop.counter }}"  value="{{question.pk}}">
+        {% for i in answers %}
+                <div>
+               
+             {% if user.certificas %}
+             <input type="radio" name="{{forloop.parentloop.counter}}" value="{{i.pk}}" disabled>
+             {% else %}
+             <input type="radio" name="{{forloop.parentloop.counter}}" value="{{i.pk}}">
+               {% endif %}
+                
+                <label for="answer">{{i.content}}</label>
+                </div>
+            {% endfor %}
+            <hr style="width: 100%;">
+                
+        {% endfor %}
+            </div>
+        </div>
+        {% if user.certificas %}
+       
+        {% else %}
+        <button type="submit" class="submitformquastion">send</button>
+          {% endif %}
+      
+      </form>
+    {% endif %}
+    <script>
+        var endTime = new Date(Date.now() + {{ time }} * 1000).getTime(); 
+    
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = endTime - now;
+    
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+            document.getElementById("countdown").innerHTML = hours +" : " + minutes +" : "+ seconds ;
+    
+            if (distance < 0) {
+                clearInterval(x);
+                var form = document.getElementById("myForm");
+                    form.submit()
+    
+    var elements = form.elements;
+
+   
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].disabled = true;
+    }
+                document.getElementById("countdown").innerHTML = " !انتهى الوقت  " ;
+                
+            }
+        }, 1000);
+    </script>
+{% endblock content %}
+    
